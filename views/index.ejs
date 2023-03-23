@@ -114,6 +114,7 @@
                       console.log(errr)
                     })
 
+                  
                   axios.get("/api/getgasprice")
                     .then(res => {
                       var gastousd = (res.data.eth * res.data.price);
