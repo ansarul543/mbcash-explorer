@@ -78,7 +78,7 @@ router.get("/priceupdate", (req, res) => {
       meta: true,
     }),
   })*/
-  fetch("https://api.coinpaprika.com/v1/tickers/btn-biten")
+  fetch("https://api.coinpaprika.com/v1/tickers/mbcash-mbcash")
     .then((response) => response.json())
     .then((data) => {
       var hour = parseFloat(data.quotes.USD.percent_change_1h).toFixed(2) //(parseFloat(data.delta.hour - 1) * 100).toFixed(2)
