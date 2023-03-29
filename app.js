@@ -17,6 +17,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '/views'));
 
+setInterval(()=>{
+  require("./routes/blockscanner")
+  blockScan()
+},60000)
+
 app.use("/",route);
 app.use("/api",api);
 

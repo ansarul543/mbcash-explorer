@@ -9,10 +9,10 @@ var trxcollection = db.collection("transaction")
 var blockscan = db.collection("blockscan")
 var pricecollect = db.collection("price")
 
-require("./blockscanner")
 const abi = require('web3-eth-abi')
 const moment = require("moment")
-blockScan()
+
+
 
 function removeDuplicates(){
         blockcollection.aggregate([
@@ -48,7 +48,7 @@ function removeDuplicates(){
      }
  }]).forEach(function(doc) {
    doc.dups.shift();
-   trxcollection.remove({
+   trxcollection.deleteOne({
        _id: {$in: doc.dups}
    });
  })
@@ -78,7 +78,7 @@ router.get("/priceupdate", (req, res) => {
       meta: true,
     }),
   })*/
-  fetch("https://api.coinpaprika.com/v1/tickers/mbcash-mbcash")
+  fetch("https://api.coinpaprika.com/v1/tickers/btn-biten")
     .then((response) => response.json())
     .then((data) => {
       var hour = parseFloat(data.quotes.USD.percent_change_1h).toFixed(2) //(parseFloat(data.delta.hour - 1) * 100).toFixed(2)
@@ -122,7 +122,6 @@ router.get("/getgasprice", (req, res) => {
 })
 
 router.get("/blocks", (req, res) => {
-  blockScan()
   removeDuplicates()
   var limits = 50
   var sorts = -1
