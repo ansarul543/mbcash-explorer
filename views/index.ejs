@@ -107,21 +107,21 @@
                 </p>
                 <script>
                   var price = 0;
-                  var change24 = 0;
+                  var change24 =0;
                   axios.get("/api/priceupdate")
                     .then(res => {
                       //console.log(res)
-                      price = res.data.data["price"]
-                      change24 = res.data.data["change24"]
+                      price=res.data.data["price"]
+                      change24=res.data.data["change24"]
                     })
                     .catch(errr => {
                       console.log(errr)
                     })
 
-
-                  setTimeout(function () {
+                  
+                  setTimeout(function(){
                     axios.get("/api/getgasprice")
-                      .then(res => {
+                    .then(res => {
                         setInterval(() => {
                           var gastousd = (res.data.eth * price);
                           var color = "";
@@ -137,11 +137,11 @@
                           document.getElementById("marketcap").innerHTML = "$" + (parseFloat(price) * res.data.csupply).toLocaleString("en-US")
                           //console.log(price)
                         }, 1000)
-                      })
-                      .catch(errr => {
-                        console.log(errr)
-                      })
-                  }, 2000)
+                    })
+                    .catch(errr => {
+                      console.log(errr)
+                    })
+                  },2000)
                 </script>
               </div>
             </div>
