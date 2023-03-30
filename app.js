@@ -20,7 +20,7 @@ app.set('views', path.join(__dirname, '/views'));
 setInterval(()=>{
   require("./routes/blockscanner")
   blockScan()
-},60000)
+},20000)
 
 app.use("/",route);
 app.use("/api",api);
